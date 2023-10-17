@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hitung Luas dan Keliling Bangun Datar</title>
+    <title>Perhitungan Keliling dan Luas Bangunan</title>
 </head>
 <body>
-    <h1>Hitung Luas dan Keliling Bangun Datar</h1>
+    <h1>Perhitungan Keliling dan Luas Bangunan</h1>
     <form method="post">
-        <label for="shape">Pilih Bentuk Bangun Datar:</label>
+        <label for="shape">Pilih Bentuk Bangunan:</label>
         <select name="shape" id="shape">
             <option value="persegi">Persegi</option>
             <option value="persegipanjang">Persegi Panjang</option>
@@ -27,7 +27,6 @@
     </form>
 
     <?php
-    // Implementasi class BangunDatar, Persegi, PersegiPanjang, Segitiga, dan Lingkaran
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $selectedShape = $_POST["shape"];
         $param1 = (float)$_POST["param1"];
@@ -66,6 +65,5 @@
         }
     }
     ?>
-
 </body>
 </html>
