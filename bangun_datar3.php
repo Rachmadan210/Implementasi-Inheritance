@@ -28,41 +28,81 @@
 
     <?php
     // Implementasi class BangunDatar, Persegi, PersegiPanjang, Segitiga, dan Lingkaran
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $selectedShape = $_POST["shape"];
-        $param1 = (float)$_POST["param1"];
-        $param2 = (float)$_POST["param2"];
-
-        switch ($selectedShape) {
-            case "persegi":
-                $luas = $param1 * $param1;
-                $keliling = 4 * $param1;
-                break;
-
-            case "persegipanjang":
-                $luas = $param1 * $param2;
-                $keliling = 2 * ($param1 + $param2);
-                break;
-
-            case "segitiga":
-                $luas = 0.5 * $param1 * $param2;
-                // Untuk menghitung keliling segitiga, Anda perlu memiliki data tambahan (misalnya panjang ketiga sisi).
-                break;
-
-            case "lingkaran":
-                $luas = 3.14 * $param1 * $param1;
-                $keliling = 2 * 3.14 * $param1;
-                break;
-
-            default:
-                $luas = $keliling = "Tidak Valid";
-                break;
+    class BangunDatar {
+        public function hitungLuas() {
+            return "Hitung luas bangun datar.";
         }
-
-        echo "<h2>Hasil Perhitungan:</h2>";
-        echo "Luas: " . $luas . "<br>";
-        if (isset($keliling)) {
-            echo "Keliling: " . $keliling . "<br>";
+    
+        public function hitungKeliling() {
+            return "Hitung keliling bangun datar.";
+        }
+    }
+    
+    class Persegi extends BangunDatar {
+        public $sisi;
+    
+        public function __construct($sisi) {
+            $this->sisi = $sisi;
+        }
+    
+        public function hitungLuas() {
+            return "Luas persegi: " . ($this->sisi * $this->sisi);
+        }
+    
+        public function hitungKeliling() {
+            return "Keliling persegi: " . (4 * $this->sisi);
+        }
+    }
+    
+    class PersegiPanjang extends BangunDatar {
+        public $panjang;
+        public $lebar;
+    
+        public function __construct($panjang, $lebar) {
+            $this->panjang = $panjang;
+            $this->lebar = $lebar;
+        }
+    
+        public function hitungLuas() {
+            return "Luas persegi panjang: " . ($this->panjang * $this->lebar);
+        }
+    
+        public function hitungKeliling() {
+            return "Keliling persegi panjang: " . (2 * ($this->panjang + $this->lebar));
+        }
+    }
+    
+    class Segitiga extends BangunDatar {
+        public $alas;
+        public $tinggi;
+    
+        public function __construct($alas, $tinggi) {
+            $this->alas = $alas;
+            $this->tinggi = $tinggi;
+        }
+    
+        public function hitungLuas() {
+            return "Luas segitiga: " . (0.5 * $this->alas * $this->tinggi);
+        }
+    
+        public function hitungKeliling() {
+            return "Hitung keliling segitiga.";
+        }
+    }
+    
+    class Lingkaran extends BangunDatar {
+        public $jariJari;
+    
+        public function __construct($jariJari) {
+            $this->jariJari = $jariJari;
+        }
+    
+        public function hitungLuas() {
+            return "Luas lingkaran: " . (3.14 * $this->jariJari * $this->jariJari);
+        }
+    
+        public function hitungKeliling() {
+            return "Keliling lingkaran: " . (2 * 3.14 * $this->jariJari);
         }
     }
     ?>
